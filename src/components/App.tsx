@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./App.css";
 import Button from "./Button/Button";
-import Label from "./Button/Label";
+import Label from "./Label";
 
 function App() {
   const [state, setState] = useState(0);
