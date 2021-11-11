@@ -1,33 +1,3 @@
-.app-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.app {
-  padding: 24px;
-  width: 250px;
-  background-color: #282e33;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border-radius: 10px;
-}
-
-.section {
-  background-color: #33393f;
-}
-
-.label {
-  border-radius: 10px;
-  text-align: center;
-  font-size: 4rem;
-  padding: 32px 0px;
-  font-weight: bold;
-}
-
 .blue {
   color: #65aadd;
 }
@@ -36,11 +6,80 @@
   color: #ee7aae;
 }
 
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  height: 100vh;
+}
+
+.block {
+  padding: 24px;
+  height: 250px;
+  width: 250px;
+  background-color: #282e33;
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.section {
+  background-color: #33393f;
+}
+
+/* Panels */
+.input-panel {
+  height: 117px;
+  border-radius: 10px;
+  padding: 16px;
+
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-between; */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: end;
+}
+
+.counter-panel {
+  height: 85px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 4rem;
+  padding: 32px 0px;
+  font-weight: bold;
+}
+
 .control-panel {
   margin-top: 16px;
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
+}
+
+/* Components */
+.input-label {
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+  color: white;
+}
+.input {
+  width: 72px;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 1.5rem;
+  margin: 4px 0px;
+  border: none;
+  background-color: #282e33;
+  color: white;
+}
+
+.input:focus {
+  outline: none;
 }
 
 .button {
