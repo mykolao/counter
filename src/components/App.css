@@ -36,9 +36,6 @@
   border-radius: 10px;
   padding: 16px;
 
-  /* display: flex;
-  flex-direction: column;
-  justify-content: space-between; */
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-items: end;
@@ -76,6 +73,14 @@
   border: none;
   background-color: #282e33;
   color: white;
+}
+
+.good {
+  border: 2px solid #65aadd;
+}
+
+.bad {
+  border: 2px solid #ee7aae;
 }
 
 .input:focus {
