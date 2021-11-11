@@ -1,0 +1,61 @@
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.app {
+  padding: 24px;
+  width: 250px;
+  background-color: #282e33;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 10px;
+}
+
+.section {
+  background-color: #33393f;
+}
+
+.label {
+  border-radius: 10px;
+  text-align: center;
+  font-size: 4rem;
+  padding: 32px 0px;
+  font-weight: bold;
+}
+
+.blue {
+  color: #65aadd;
+}
+
+.red {
+  color: #ee7aae;
+}
+
+.control-panel {
+  margin-top: 16px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  width: 100%;
+  padding: 8px;
+  margin: 16px;
+  background-color: #65aadd;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: default;
+}
