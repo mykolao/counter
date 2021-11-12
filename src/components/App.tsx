@@ -12,10 +12,8 @@ function App() {
       : item.split(",").map((n) => Number(n));
   });
 
-  const onSetHandler = (values: CounterValues) => {
-    localStorage.setItem("counter-limits", state.toString());
+  const onSetHandler = (values: CounterValues) =>
     setState(values);
-  };
 
   return (
     <div className="app-container">

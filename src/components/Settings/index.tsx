@@ -28,7 +28,7 @@ const Settings = ({ values, onSet }: props) => {
     ? inputStatus.good
     : inputStatus.bad;
 
-  const setButton = isValid;
+  const setButton = isValid && state !== values;
   return (
     <div className="block">
       <div className="section input-panel">
