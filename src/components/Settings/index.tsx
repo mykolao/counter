@@ -18,7 +18,10 @@ const Settings = ({ onSet }: props) => {
 
   const [min, max] = state;
 
-  const setHandler = () => {};
+  const setHandler = () => {
+    localStorage.setItem("counter-limits", state.toString());
+    onSet(state);
+  };
 
   const isValid = min < max;
 
