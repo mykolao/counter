@@ -2,15 +2,20 @@ import { useState } from "react";
 import Button from "../Button";
 import Input, { inputStatus } from "../Input";
 
-const Settings = () => {
-  const [state, setState] = useState<number[]>(() => {
+export type CounterValues = number[];
+interface props {
+  onSet: (v: CounterValues) => void;
+}
+
+const Settings = ({ onSet }: props) => {
+  const [state, setState] = useState<CounterValues>(() => {
     const item = localStorage.getItem("counter-limits");
 
     return item == null
       ? [1, 1]
       : item.split(",").map((n) => Number(n));
   });
-  
+
   const [min, max] = state;
 
   const setHandler = () => {};

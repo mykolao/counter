@@ -1,13 +1,14 @@
 import "./App.css";
 import Counter from "./Counter";
-import Settings from "./Settings";
+import Settings, { CounterValues } from "./Settings";
 
 function App() {
+  const onSetHandler = (values: CounterValues) => {};
 
   return (
     <div className="app-container">
-      <Settings/>
-      <Counter/>
+      <Settings onSet={onSetHandler} />
+      <Counter />
     </div>
   );
 }
