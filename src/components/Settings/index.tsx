@@ -3,18 +3,26 @@ import Button from "../Button";
 import Input, { inputStatus } from "../Input";
 
 const Settings = () => {
-  const [state, setState] = useState<[number, number]>([0, 1]);
-  const [minInput, setMinInput] = useState<number>(0);
-  const [maxInput, setMaxInput] = useState<number>(0);
+  const [state, setState] = useState<[number, number]>([0, 0]);
+  const [min, max] = state;
 
   const setHandler = () => {};
-  const minInputChangeHandler = () => {};
-  const minInputStatus = inputStatus.good;
 
-  const maxInputChangeHandler = () => {};
-  const maxInputStatus = inputStatus.good;
+  const isValid = min < max;
 
-  const setButton = false;
+  const minInputChangeHandler = (val: number) =>
+    setState([val, state[1]]);
+  const minInputStatus = isValid
+    ? inputStatus.good
+    : inputStatus.bad;
+
+  const maxInputChangeHandler = (val: number) =>
+    setState([state[0], val]);
+  const maxInputStatus = isValid
+    ? inputStatus.good
+    : inputStatus.bad;
+
+  const setButton = isValid;
   return (
     <div className="block">
       <div className="section input-panel">
