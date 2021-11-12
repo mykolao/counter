@@ -4,24 +4,15 @@ import Input, { inputStatus } from "../Input";
 
 export type CounterValues = number[];
 interface props {
+  values: CounterValues;
   onSet: (v: CounterValues) => void;
 }
 
-const Settings = ({ onSet }: props) => {
-  const [state, setState] = useState<CounterValues>(() => {
-    const item = localStorage.getItem("counter-limits");
-
-    return item == null
-      ? [1, 1]
-      : item.split(",").map((n) => Number(n));
-  });
-
+const Settings = ({ values, onSet }: props) => {
+  const [state, setState] = useState<CounterValues>(values);
   const [min, max] = state;
 
-  const setHandler = () => {
-    localStorage.setItem("counter-limits", state.toString());
-    onSet(state);
-  };
+  const setHandler = () => onSet(state);
 
   const isValid = min < max;
 

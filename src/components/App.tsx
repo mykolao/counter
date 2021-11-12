@@ -1,13 +1,25 @@
+import { useState } from "react";
 import "./App.css";
 import Counter from "./Counter";
 import Settings, { CounterValues } from "./Settings";
 
 function App() {
-  const onSetHandler = (values: CounterValues) => {};
+  const [state, setState] = useState<CounterValues>(() => {
+    const item = localStorage.getItem("counter-limits");
+
+    return item == null
+      ? [1, 1]
+      : item.split(",").map((n) => Number(n));
+  });
+
+  const onSetHandler = (values: CounterValues) => {
+    localStorage.setItem("counter-limits", state.toString());
+    setState(values);
+  };
 
   return (
     <div className="app-container">
-      <Settings onSet={onSetHandler} />
+      <Settings values={state} onSet={onSetHandler} />
       <Counter />
     </div>
   );
