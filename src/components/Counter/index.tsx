@@ -17,7 +17,7 @@ const Counter = () => {
   const resButton: boolean = state > minState;
   return (
     <div className="block">
-      <div className="section main-panel">
+      <div className="section counter-panel">
           <Label value={state} color={labelColor} />
         </div>
         <div className="section control-panel">
@@ -32,8 +32,6 @@ const Counter = () => {
             onClick={resetHandler}
           />
         </div>
-      {/* <div className="section"></div>
-      <div className="section control-panel"></div> */}
     </div>
   );
 };
