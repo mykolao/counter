@@ -13,7 +13,6 @@ const Counter = ({
   limits,
   onCounterChange,
 }: props) => {
-  console.log("State changed", status);
   const [minValue, maxValue] = limits;
 
   const incrementHandler = () => onCounterChange(value + 1);
