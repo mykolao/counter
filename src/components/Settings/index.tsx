@@ -1,37 +1,38 @@
 import { useState } from "react";
+import { CounterLimits } from "../App";
 import Button from "../Button";
 import Input, { inputStatus } from "../Input";
 
-export type CounterValues = number[];
 interface props {
-  values: CounterValues;
-  onSet: (v: CounterValues) => void;
+  values: CounterLimits;
+  onChange: () => void;
+  onSet: (v: CounterLimits) => void;
 }
 
-const Settings = ({ values, onSet }: props) => {
-  const [state, setState] = useState<CounterValues>(values);
-  const [min, max] = state;
+const Settings = ({ values, onChange, onSet }: props) => {
+  // const [state, setState] = useState<CounterLimits>(values);
+  // const [min, max] = state;
 
-  const setHandler = () => onSet(state);
+  // const setHandler = () => onSet(state);
 
-  const isValid = min < max;
+  // const isValid = min < max;
 
-  const minInputChangeHandler = (val: number) =>
-    setState([val, state[1]]);
-  const minInputStatus = isValid
-    ? inputStatus.good
-    : inputStatus.bad;
+  // const minInputChangeHandler = (val: number) =>
+  //   setState([val, state[1]]);
+  // const minInputStatus = isValid
+  //   ? inputStatus.good
+  //   : inputStatus.bad;
 
-  const maxInputChangeHandler = (val: number) =>
-    setState([state[0], val]);
-  const maxInputStatus = isValid
-    ? inputStatus.good
-    : inputStatus.bad;
+  // const maxInputChangeHandler = (val: number) =>
+  //   setState([state[0], val]);
+  // const maxInputStatus = isValid
+  //   ? inputStatus.good
+  //   : inputStatus.bad;
 
-  const setButton = isValid && state !== values;
+  // const setButton = isValid && state !== values;
   return (
     <div className="block">
-      <div className="section input-panel">
+      {/* <div className="section input-panel">
         <div className="input-label">Max Value</div>
         <Input
           value={state[1]}
@@ -51,7 +52,7 @@ const Settings = ({ values, onSet }: props) => {
           value="Set"
           onClick={setHandler}
         />
-      </div>
+      </div> */}
     </div>
   );
 };
