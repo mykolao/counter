@@ -3,15 +3,16 @@ import "./App.css";
 import Counter from "./Counter";
 import Settings, { CounterValues } from "./Settings";
 
-type CounterLimits = number[];
-type CounterStatus = "ok" | "set" | "error";
+// Types
+export type CounterLimits = number[];
+export type CounterStatus = "ok" | "set" | "error";
 interface CounterState {
   value: number;
   limits: CounterLimits;
   status: CounterStatus;
 }
 
-const fetchState = (): CounterLimits => {
+const getLimits = (): CounterLimits => {
   const item = localStorage.getItem("counter-limits");
 
   return item == null
@@ -19,11 +20,19 @@ const fetchState = (): CounterLimits => {
     : item.split(",").map((n) => Number(n));
 };
 
-const saveState = (state: CounterLimits) =>
+const setLimits = (state: CounterLimits) =>
   localStorage.setItem("counter-limits", String(state));
 
+const limits = getLimits();
+const initialState: CounterState = {
+  limits,
+  value: limits[0],
+  status: "ok",
+};
+
 function App() {
-  // const [state, setState] = useState<CounterValues>(fetchState);
+  const [state, setState] =
+    useState<CounterState>(initialState);
 
   // const onSetHandler = (values: CounterValues) => {
   //   saveState(values);
