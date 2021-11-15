@@ -18,7 +18,7 @@ function App() {
   return (
     <div className="app-container">
       <Settings values={state} onSet={onSetHandler} />
-      <Counter values={state} />
+      <Counter values={state} status="set"/>
     </div>
   );
 }

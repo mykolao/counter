@@ -3,8 +3,10 @@ import Button from "../Button";
 import Label from "../Label";
 import { CounterValues } from "../Settings";
 
+export type counterStatus = "ok" | "set" | "error";
 interface props {
   values: CounterValues;
+  status: counterStatus;
 }
 
 const Counter = ({ values }: props) => {
