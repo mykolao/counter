@@ -6,10 +6,11 @@ import Input, { inputStatus } from "../Input";
 interface props {
   values: CounterLimits;
   onChange: () => void;
+  onError: () => void;
   onSet: (v: CounterLimits) => void;
 }
 
-const Settings = ({ values, onChange, onSet }: props) => {
+const Settings = ({ values, onChange, onSet, onError }: props) => {
   const [state, setState] = useState<CounterLimits>(values);
   const [min, max] = state;
 
@@ -17,6 +18,8 @@ const Settings = ({ values, onChange, onSet }: props) => {
   const changeHandler = () => onChange();
 
   const isValid = min < max;
+
+  if(!isValid) onError();
 
   const minInputChangeHandler = (val: number) => {
     setState([val, state[1]]);
