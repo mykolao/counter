@@ -1,12 +1,12 @@
 import { useState } from "react";
 import "./App.css";
 import Counter from "./Counter";
-import Settings, { CounterValues } from "./Settings";
+import Settings from "./Settings";
 
 // Types
 export type CounterLimits = number[];
 export type CounterStatus = "ok" | "set" | "error";
-interface CounterState {
+export interface CounterState {
   value: number;
   limits: CounterLimits;
   status: CounterStatus;
@@ -34,14 +34,23 @@ function App() {
   const [state, setState] =
     useState<CounterState>(initialState);
 
-  // const onSetHandler = (values: CounterValues) => {
-  //   saveState(values);
-  //   setState(values);
-  // };
+  const onSetHandler = (limits: CounterLimits) => {
+    setLimits(limits);
+    setState({ ...state, limits, status: "ok" });
+  };
+
+  const onChangeHandler = () => {
+    setState({ ...state, status: "set" });
+  };
+
   return (
     <div className="app-container">
-      {/* <Settings values={state} onSet={onSetHandler} />
-      <Counter
+      <Settings
+        values={state.limits}
+        onSet={onSetHandler}
+        onChange={onChangeHandler}
+      />
+      {/* <Counter
         values={state}
         status="ok"
         initialValue={state[0]}
