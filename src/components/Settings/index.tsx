@@ -10,29 +10,33 @@ interface props {
 }
 
 const Settings = ({ values, onChange, onSet }: props) => {
-  // const [state, setState] = useState<CounterLimits>(values);
-  // const [min, max] = state;
+  const [state, setState] = useState<CounterLimits>(values);
+  const [min, max] = state;
 
-  // const setHandler = () => onSet(state);
+  const setHandler = () => onSet(state);
+  const changeHandler = () => onChange();
 
-  // const isValid = min < max;
+  const isValid = min < max;
 
-  // const minInputChangeHandler = (val: number) =>
-  //   setState([val, state[1]]);
-  // const minInputStatus = isValid
-  //   ? inputStatus.good
-  //   : inputStatus.bad;
+  const minInputChangeHandler = (val: number) => {
+    setState([val, state[1]]);
+    changeHandler();
+  };
 
-  // const maxInputChangeHandler = (val: number) =>
-  //   setState([state[0], val]);
-  // const maxInputStatus = isValid
-  //   ? inputStatus.good
-  //   : inputStatus.bad;
+  const minInputStatus = isValid
+    ? inputStatus.good
+    : inputStatus.bad;
 
-  // const setButton = isValid && state !== values;
+  const maxInputChangeHandler = (val: number) =>
+    setState([state[0], val]);
+  const maxInputStatus = isValid
+    ? inputStatus.good
+    : inputStatus.bad;
+
+  const setButton = isValid && state !== values;
   return (
     <div className="block">
-      {/* <div className="section input-panel">
+      <div className="section input-panel">
         <div className="input-label">Max Value</div>
         <Input
           value={state[1]}
@@ -52,7 +56,7 @@ const Settings = ({ values, onChange, onSet }: props) => {
           value="Set"
           onClick={setHandler}
         />
-      </div> */}
+      </div>
     </div>
   );
 };
