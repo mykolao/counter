@@ -1,32 +1,66 @@
-import { useState } from "react";
+import { CounterState } from "../App";
 import Button from "../Button";
 import Label from "../Label";
-import { CounterValues } from "../Settings";
 
 export type counterStatus = "ok" | "set" | "error";
-interface props {
-  values: CounterValues;
-  status: counterStatus;
+interface props extends CounterState {
+  onCounterChange: (value: number) => void;
 }
 
-const Counter = ({ values }: props) => {
-  const [minState, maxState] = values;
-  const [state, setState] = useState(minState);
+const Counter = ({
+  value,
+  status,
+  limits,
+  onCounterChange,
+}: props) => {
+  console.log("State changed", status);
+  const [minValue, maxValue] = limits;
 
-  const incrementHandler = () => setState(state + 1);
-  const resetHandler = () => setState(minState);
+  const incrementHandler = () => onCounterChange(value + 1);
+  const resetHandler = () => onCounterChange(minValue);
 
-  const labelColor: "red" | "blue" =
-    state === maxState ? "red" : "blue";
+  let label, incButton, resButton;
 
-  const incButton: boolean = state < maxState;
+  let labelColor: "red" | "blue";
 
-  const resButton: boolean = state > minState;
+  switch (status) {
+    case "set":
+      incButton = resButton = false;
+
+      label = (
+        <Label
+          size="32"
+          value={"Enter values & press set"}
+          color={"blue"}
+        />
+      );
+
+      break;
+
+    case "ok":
+      labelColor = value === maxValue ? "red" : "blue";
+      incButton = value < maxValue && status === "ok";
+      resButton = value > minValue;
+
+      label = <Label value={value} color={labelColor} />;
+      break;
+
+    case "error":
+      incButton = resButton = false;
+
+      label = (
+        <Label
+          size="24"
+          value={"Incorrect Values!"}
+          color={"red"}
+        />
+      );
+      break;
+  }
+
   return (
     <div className="block">
-      <div className="section counter-panel">
-        <Label value={state} color={labelColor} />
-      </div>
+      <div className="section counter-panel">{label}</div>
       <div className="section control-panel">
         <Button
           value="Incr"

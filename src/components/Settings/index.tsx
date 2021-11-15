@@ -10,28 +10,37 @@ interface props {
   onSet: (v: CounterLimits) => void;
 }
 
-const Settings = ({ values, onChange, onSet, onError }: props) => {
+const Settings = ({
+  values,
+  onChange,
+  onSet,
+  onError,
+}: props) => {
   const [state, setState] = useState<CounterLimits>(values);
   const [min, max] = state;
+
+  const isValid = min < max;
 
   const setHandler = () => onSet(state);
   const changeHandler = () => onChange();
 
-  const isValid = min < max;
-
-  if(!isValid) onError();
-
   const minInputChangeHandler = (val: number) => {
+    if (val >= max) onError();
+    else changeHandler();
     setState([val, state[1]]);
-    changeHandler();
   };
 
   const minInputStatus = isValid
     ? inputStatus.good
     : inputStatus.bad;
 
-  const maxInputChangeHandler = (val: number) =>
+  const maxInputChangeHandler = (val: number) => {
+    if (val <= min) onError();
+    else changeHandler();
+
     setState([state[0], val]);
+  };
+
   const maxInputStatus = isValid
     ? inputStatus.good
     : inputStatus.bad;

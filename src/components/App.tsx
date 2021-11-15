@@ -36,25 +36,34 @@ function App() {
 
   const onSetHandler = (limits: CounterLimits) => {
     setLimits(limits);
-    setState({ ...state, limits, status: "ok" });
+    setState({ value: limits[0], limits, status: "ok" });
   };
 
   const onChangeHandler = () => {
     setState({ ...state, status: "set" });
   };
 
+  const onErrorHandler = () => {
+    setState({ ...state, status: "error" });
+  };
+
+  const onCounterChangeHandler = (value: number) =>
+    setState({ ...state, value });
+
   return (
     <div className="app-container">
       <Settings
         values={state.limits}
         onSet={onSetHandler}
+        onError={onErrorHandler}
         onChange={onChangeHandler}
       />
-      {/* <Counter
-        values={state}
-        status="ok"
-        initialValue={state[0]}
-      /> */}
+      <Counter
+        value={state.value}
+        status={state.status}
+        limits={state.limits}
+        onCounterChange={onCounterChangeHandler}
+      />
     </div>
   );
 }
