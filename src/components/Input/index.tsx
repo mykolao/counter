@@ -1,26 +1,24 @@
-import { ChangeEvent } from "react";
-
-export enum inputStatus {
-  good = "good",
-  bad = "bad",
-}
+import React from "react";
 interface props {
-  value: number;
-  status: inputStatus;
-  onValueChange: (v: number) => void;
+  value: string;
+  valid: boolean;
+  onValueChange: (v: string) => void;
 }
 
-const Input = ({ value, status, onValueChange }: props) => {
-  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) =>
-    onValueChange(Number(e.target.value));
+const Input = ({ value, valid, onValueChange }: props) => {
+  const onChangeHandler = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const value = e.target.value;
+    onValueChange(value);
+  };
 
   return (
     <input
-      min={0}
-      className={`input ${status}`}
+      type="text"
       value={value}
-      type="number"
       onChange={onChangeHandler}
+      className={valid ? "input good" : "input bad"}
     />
   );
 };
