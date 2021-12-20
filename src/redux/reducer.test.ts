@@ -1,21 +1,16 @@
+import defaultState, { State } from "./default-state";
 import reducer, {
   increment,
   reset,
   setMax,
   setMin,
   setStatus,
-  State,
 } from "./reducer";
 
 let state: State;
 
 beforeEach(() => {
-  state = {
-    min: 0,
-    max: 3,
-    status: "ok",
-    value: 0,
-  };
+  state = defaultState;
 });
 
 test("Value should be incremented", () => {

@@ -1,3 +1,5 @@
+import defaultState, { State, Status } from "./default-state";
+
 // ACTION CREATORS
 export const increment = () => ({ type: "INCREMENT" } as const);
 type IncAction = ReturnType<typeof increment>;
@@ -33,25 +35,9 @@ type Action =
   | setMinAction
   | setMaxAction;
 
-// INITIAL STATE
-type Status = "ok" | "set" | "error";
-export interface State {
-  min: number;
-  max: number;
-  value: number;
-  status: Status;
-}
-
-const initialState: State = {
-  min: 0,
-  max: 1,
-  value: 0,
-  status: "ok",
-};
-
 // REDUCER
 const reducer = (
-  state: State = initialState,
+  state: State = defaultState,
   action: Action
 ): State => {
   switch (action.type) {
