@@ -1,6 +1,8 @@
 import reducer, {
   increment,
   reset,
+  setMax,
+  setMin,
   setStatus,
   State,
 } from "./reducer";
@@ -35,4 +37,14 @@ test("Value should be reset", () => {
 test("Status should change", () => {
   const endState = reducer(state, setStatus("set"));
   expect(endState.status).toBe("set");
+});
+
+test("Min value should change", () => {
+  const endState = reducer(state, setMin(1));
+  expect(endState.min).toBe(1);
+});
+
+test("Max value should change", () => {
+  const endState = reducer(state, setMax(2));
+  expect(endState.max).toBe(2);
 });
