@@ -15,14 +15,14 @@ export const setStatus = (status: Status) =>
   } as const);
 type SetStatAction = ReturnType<typeof setStatus>;
 
-export const setMin = (min: number) =>
+export const setMin = (min: string) =>
   ({
     type: "SET_MIN",
     payload: { min },
   } as const);
 type setMinAction = ReturnType<typeof setMin>;
 
-export const setMax = (max: number) =>
+export const setMax = (max: string) =>
   ({
     type: "SET_Max",
     payload: { max },
@@ -54,7 +54,7 @@ const reducer = (
     case "RESET":
       resultState = {
         ...state,
-        value: state.min,
+        value: Number(state.min),
       };
       break;
 
