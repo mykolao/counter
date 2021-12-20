@@ -1,7 +1,10 @@
 export const increment = () => ({ type: "INCREMENT" } as const);
 type IncAction = ReturnType<typeof increment>;
 
-type Action = IncAction;
+export const reset = () => ({ type: "RESET" } as const);
+type ResAction = ReturnType<typeof reset>;
+
+type Action = IncAction | ResAction;
 
 type Status = "ok" | "set" | "error";
 export interface State {
@@ -27,6 +30,12 @@ const reducer = (
       return {
         ...state,
         value: state.value + 1,
+      };
+
+    case "RESET":
+      return {
+        ...state,
+        value: state.min,
       };
 
     default:
