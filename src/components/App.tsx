@@ -52,18 +52,8 @@ function App() {
 
   return (
     <div className="app-container">
-      <Settings
-        values={state.limits}
-        onSet={onSetHandler}
-        onError={onErrorHandler}
-        onChange={onChangeHandler}
-      />
-      <Counter
-        value={state.value}
-        status={state.status}
-        limits={state.limits}
-        onCounterChange={onCounterChangeHandler}
-      />
+      <Settings />
+      <Counter />
     </div>
   );
 }
