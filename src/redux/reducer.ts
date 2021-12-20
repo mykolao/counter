@@ -1,3 +1,8 @@
+export const increment = () => ({ type: "INCREMENT" } as const);
+type IncAction = ReturnType<typeof increment>;
+
+type Action = IncAction;
+
 type Status = "ok" | "set" | "error";
 export interface State {
   min: number;
@@ -13,6 +18,20 @@ const initialState: State = {
   status: "ok",
 };
 
-const reducer = () => {};
+const reducer = (
+  state: State = initialState,
+  action: Action
+): State => {
+  switch (action.type) {
+    case "INCREMENT":
+      return {
+        ...state,
+        value: state.value + 1,
+      };
+
+    default:
+      return state;
+  }
+};
 
 export default reducer;
