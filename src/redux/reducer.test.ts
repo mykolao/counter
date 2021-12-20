@@ -1,4 +1,4 @@
-import { State } from "./reducer";
+import reducer, { increment, State } from "./reducer";
 
 let state: State;
 
@@ -9,4 +9,12 @@ beforeEach(() => {
     status: "ok",
     value: 0,
   };
+});
+
+test("Value should be incremented", () => {
+  const endState = reducer(state, increment());
+  expect(endState.value).toBe(1);
+
+  let endState2 = reducer(endState, increment());
+  expect(endState2.value).toBe(2);
 });
