@@ -14,6 +14,18 @@
   height: 100vh;
 }
 
+@media (max-width: 680px) {
+  .app-container {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .app-container {
+    flex-direction: column;
+  }
+}
+
 .block {
   padding: 24px;
   height: 250px;
