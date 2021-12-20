@@ -1,4 +1,5 @@
-import defaultState, { State, Status } from "./default-state";
+import LocalStorage from "../local-storage/local-storage";
+import { State, Status } from "./default-state";
 
 // ACTION CREATORS
 export const increment = () => ({ type: "INCREMENT" } as const);
@@ -37,33 +38,41 @@ type Action =
 
 // REDUCER
 const reducer = (
-  state: State = defaultState,
+  state: State = LocalStorage.getState(),
   action: Action
 ): State => {
+  let resultState: State;
+
   switch (action.type) {
     case "INCREMENT":
-      return {
+      resultState = {
         ...state,
         value: state.value + 1,
       };
+      break;
 
     case "RESET":
-      return {
+      resultState = {
         ...state,
         value: state.min,
       };
+      break;
 
     case "SET_STATUS":
     case "SET_MIN":
     case "SET_Max":
-      return {
+      resultState = {
         ...state,
         ...action.payload,
       };
+      break;
 
     default:
-      return state;
+      resultState = state;
   }
+
+  LocalStorage.setState(resultState);
+  return resultState;
 };
 
 export default reducer;
