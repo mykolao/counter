@@ -4,7 +4,14 @@ type IncAction = ReturnType<typeof increment>;
 export const reset = () => ({ type: "RESET" } as const);
 type ResAction = ReturnType<typeof reset>;
 
-type Action = IncAction | ResAction;
+export const setStatus = (status: Status) =>
+  ({
+    type: "SET_STATUS",
+    payload: { status },
+  } as const);
+type SetStatAction = ReturnType<typeof setStatus>;
+
+type Action = IncAction | ResAction | SetStatAction;
 
 type Status = "ok" | "set" | "error";
 export interface State {
@@ -36,6 +43,12 @@ const reducer = (
       return {
         ...state,
         value: state.min,
+      };
+
+    case "SET_STATUS":
+      return {
+        ...state,
+        ...action.payload,
       };
 
     default:

@@ -1,4 +1,9 @@
-import reducer, { increment, reset, State } from "./reducer";
+import reducer, {
+  increment,
+  reset,
+  setStatus,
+  State,
+} from "./reducer";
 
 let state: State;
 
@@ -25,4 +30,9 @@ test("Value should be reset", () => {
     reset()
   );
   expect(endState.value).toBe(state.min);
+});
+
+test("Status should change", () => {
+  const endState = reducer(state, setStatus("set"));
+  expect(endState.status).toBe("set");
 });
