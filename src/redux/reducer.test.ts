@@ -27,7 +27,7 @@ test("Value should be reset", () => {
     reducer(state, increment()),
     reset()
   );
-  expect(endState.value).toBe(state.min);
+  expect(endState.value).toBe(Number(state.min));
 });
 
 test("Status should change", () => {
@@ -36,13 +36,13 @@ test("Status should change", () => {
 });
 
 test("Min value should change", () => {
-  const endState = reducer(state, setMin(1));
-  expect(endState.min).toBe(1);
+  const endState = reducer(state, setMin("1"));
+  expect(endState.min).toBe("1");
 });
 
 test("Max value should change", () => {
-  const endState = reducer(state, setMax(2));
-  expect(endState.max).toBe(2);
+  const endState = reducer(state, setMax("2"));
+  expect(endState.max).toBe("2");
 });
 
 test("State should be saved in LocalStorage", () => {
