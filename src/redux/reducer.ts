@@ -59,6 +59,17 @@ const reducer = (
       break;
 
     case "SET_STATUS":
+      const value =
+        action.payload.status === "ok"
+          ? Number(state.min)
+          : state.value;
+
+      resultState = {
+        ...state,
+        value,
+        ...action.payload,
+      };
+      break;
     case "SET_MIN":
     case "SET_Max":
       resultState = {
