@@ -23,8 +23,6 @@ const Settings = () => {
     })
   );
 
-  console.log("Receieved State: ", state);
-
   // Validation
   const max = Number(state.max);
   const min = Number(state.min);
@@ -95,46 +93,6 @@ const Settings = () => {
       </div>
     </div>
   );
-  // const [state, setState] = useState<CounterLimits>(values);
-  // const [min, max] = state;
-
-  // const isValid = min < max;
-
-  // const setHandler = () => onSet(state);
-  // const changeHandler = () => onChange();
-
-  // const minInputChangeHandler = (val: number) => {
-  //   if (val >= max) onError();
-  //   else changeHandler();
-  //   setState([val, state[1]]);
-  // };
-
-  // const minInputStatus = isValid
-  //   ? inputStatus.good
-  //   : inputStatus.bad;
-
-  // const maxInputChangeHandler = (val: number) => {
-  //   if (val <= min) onError();
-  //   else changeHandler();
-
-  //   setState([state[0], val]);
-  // };
-
-  // const maxInputStatus = isValid
-  //   ? inputStatus.good
-  //   : inputStatus.bad;
-
-  // const setButton = isValid && state !== values;
-  // return (
-  //   <div className="block">
-  //     <div className="section input-panel">
-
-  //     </div>
-  //     <div className="section control-panel">
-
-  //     </div>
-  //   </div>
-  // );
 };
 
 export default Settings;
