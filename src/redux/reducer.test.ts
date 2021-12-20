@@ -1,3 +1,4 @@
+import LocalStorage from "../local-storage/local-storage";
 import defaultState, { State } from "./default-state";
 import reducer, {
   increment,
@@ -43,3 +44,8 @@ test("Max value should change", () => {
   const endState = reducer(state, setMax(2));
   expect(endState.max).toBe(2);
 });
+
+test("State should be saved in LocalStorage", () => {
+  const endState = reducer(state, setStatus("error"));
+  expect(endState).toStrictEqual(LocalStorage.getState());
+})
