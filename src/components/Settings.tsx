@@ -1,9 +1,8 @@
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { State, Status } from "../../redux/default-state";
-import { setMax, setMin, setStatus } from "../../redux/reducer";
-import Button from "../Button";
-import Input from "../Input";
+import { State, Status } from "../redux/default-state";
+import { setMax, setMin, setStatus } from "../redux/reducer";
+import Button from "./Button";
+import Input from "./Input";
 
 interface SettingsState {
   min: string;

@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import { State } from "../../redux/default-state";
-import { increment, reset } from "../../redux/reducer";
-import Button from "../Button";
-import Label from "../Label";
+import { State } from "../redux/default-state";
+import { increment, reset } from "../redux/reducer";
+import Button from "./Button";
+import Label from "./Label";
 
 const Counter = () => {
   // State

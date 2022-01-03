@@ -1,5 +1,3 @@
-import React from "react";
-
 type propsType = {
   value: string;
   disabled: boolean;
